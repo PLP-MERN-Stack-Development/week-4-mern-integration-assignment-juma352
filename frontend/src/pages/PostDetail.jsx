@@ -1,4 +1,3 @@
-// src/pages/PostDetail.jsx
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getPostById } from '../services/postService';
@@ -22,8 +21,11 @@ const PostDetail = () => {
     <Card className="max-w-3xl mx-auto">
       <CardContent className="p-6">
         <CardTitle className="text-2xl">{post.title}</CardTitle>
-        <p className="text-muted-foreground mt-2">{post.excerpt}</p>
-        <div className="mt-6 whitespace-pre-wrap">{post.content}</div>
+        <p className="text-muted-foreground mt-2">{post.author}</p>
+        <div className="mt-6 whitespace-pre-wrap">{post.body}</div>
+        {post.imageUrl && (
+          <img src={post.imageUrl} alt={post.title} className="mt-4 max-w-full rounded" />
+        )}
       </CardContent>
     </Card>
   );

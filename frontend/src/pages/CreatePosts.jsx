@@ -1,4 +1,3 @@
-// src/pages/CreatePost.jsx
 import { useState } from 'react';
 import { createPost } from '../services/postService';
 import { Input } from '@/components/ui/input';
@@ -8,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { useNavigate } from 'react-router-dom';
 
 const CreatePost = () => {
-  const [form, setForm] = useState({ title: '', content: '', excerpt: '' });
+  const [form, setForm] = useState({ title: '', body: '', author: '', imageUrl: '' });
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -32,12 +31,16 @@ const CreatePost = () => {
         <Input name="title" value={form.title} onChange={handleChange} required />
       </div>
       <div>
-        <Label htmlFor="excerpt">Excerpt</Label>
-        <Input name="excerpt" value={form.excerpt} onChange={handleChange} required />
+        <Label htmlFor="author">Author</Label>
+        <Input name="author" value={form.author} onChange={handleChange} placeholder="Anonymous" />
       </div>
       <div>
-        <Label htmlFor="content">Content</Label>
-        <Textarea name="content" rows={6} value={form.content} onChange={handleChange} required />
+        <Label htmlFor="imageUrl">Image URL</Label>
+        <Input name="imageUrl" value={form.imageUrl} onChange={handleChange} />
+      </div>
+      <div>
+        <Label htmlFor="body">Body</Label>
+        <Textarea name="body" rows={6} value={form.body} onChange={handleChange} required />
       </div>
       <Button type="submit">Publish</Button>
     </form>
